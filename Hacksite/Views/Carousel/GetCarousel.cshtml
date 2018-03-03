@@ -1,0 +1,31 @@
+﻿@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@model Hacksite.Models.CarouselViewModel
+
+@if (Model != null)
+{
+    <div @Html.Sxa().Component("carousel custom-carousel")>
+        <div class="component-content">
+            <div class="container carouse1_wrapper" style="@Html.Raw(Model.BackgroundColor)">
+                <div class="car‘ousel-container‘ jsCarousel" data-id="dummycarouselid">
+                    @foreach (var slide in Model.CarouselModelItems)
+                    {
+                        <div class="carousel_cell-wrapper">
+                            <div class="carousel__inner carousel__inner--first">
+                                <div>
+                                    <h1>@Html.Raw(slide.Title)</h1>
+                                    <p>@Html.Raw(slide.Description)</p>
+                                    <div class="component cta cta-—underline">
+                                        <a href="@Html.Raw(slide.Link)">@Html.Raw(slide.Link)</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
